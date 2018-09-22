@@ -1,0 +1,90 @@
+Mem_Init returned 0x7f4a1107d000
+
+
+Free memory: 
+address: 0x7f4a1107d000
+
+size: 4072
+
+
+Head is 0x7f4a1107d000
+Allocated 4 bytes at 0x7f4a1107d018
+
+Free memory: 
+address: 0x7f4a1107d01c
+
+size: 4044
+
+
+Freeing the allocated chunk.
+
+Free memory: 
+address: 0x7f4a1107d000
+
+size: 4
+
+
+address: 0x7f4a1107d01c
+
+size: 4044
+
+
+Allocating 2 chunks of memory.
+Head is 0x7f4a1107d000
+Head is 0x7f4a1107d01c
+
+Free memory: 
+address: 0x7f4a1107d038
+
+size: 4016
+
+
+Freeing first chunk and allocating a 3rd bigger chunk.
+Head is 0x7f4a1107d038
+
+Free memory: 
+address: 0x7f4a1107d000
+
+size: 4
+
+
+address: 0x7f4a1107d05b
+
+size: 3981
+
+
+Reallocating from first chunk.
+Head is 0x7f4a1107d000
+
+Free memory: 
+address: 0x7f4a1107d05b
+
+size: 3981
+
+
+Allocate a big blocks
+Allocated 4000 bytes at 0x7f4a1107d018
+
+Free memory: 
+address: 0x7f4a1107d05b
+
+size: 3981
+
+
+Head is 0x7f4a1107d05b
+Tried to allocate 1000 bytes.  Mem_Alloc returned 0x7f4a1107d073
+
+Free memory: 
+address: 0x7f4a1107d45b
+
+size: 2957
+
+
+Freeing a random address; it should fail
+
+Free memory: 
+address: 0x7f4a1107d45b
+
+size: 2957
+
+
