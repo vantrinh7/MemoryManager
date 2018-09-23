@@ -16,7 +16,7 @@ Suppose 100 bytes is allocated and identified by the pointer `ptr`. The header t
 
 Suppose two more 100-byte chunks are allocated (left figure below). The size of the free chunk is now 3764 (= 3980 - 100 - 8 - 100 - 8). If the second chunk is freed, its "next" field will contain the address of the pointer to next free chunk (right figure below).
 
-![](misc/3.png) ![](misc/4.png)
+![](misc/3.png)         ![](misc/4.png)
 
 As a result, we have a two allocated chunks identified by magic number, and list of 2 free chunks of size 100 bytes and 3764 bytes.
 
