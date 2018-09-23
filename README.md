@@ -45,4 +45,5 @@ Method `Mem_Free()` behaves similarly to `free()` function in C. When the proces
 Note: Before memtest.c is run, an environment variable, LD_LIBRARY_PATH, needs to be set, so that the system can find the library at run-time. Assuming `memtest.c` is run from the directory where it is stored, this command should be used before running the file: `export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH`.
 
 <br>
+
 (Image source: [Operating System - Three Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/), Chapter 17).
