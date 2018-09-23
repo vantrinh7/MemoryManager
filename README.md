@@ -17,19 +17,29 @@ Suppose 100 bytes is allocated and identified by the pointer `ptr`. The header t
 Suppose two more 100-byte chunks are allocated (left figure below). The size of the free chunk is now 3764 (= 3980 - 100 - 8 - 100 - 8). If the second chunk is freed, its "next" field will contain the address of the pointer to next free chunk (right figure below).
 
 (pic) (pic)
+
 As a result, we have a two allocated chunks identified by magic number, and list of 2 free chunks of size 100 bytes and 3764 bytes.
 
 On a side note, the memory manager operates entirely within the virtual address space of a single process. It does not know about the physical pages allocated to this process, the mapping from virtual addresses to physical addresses, or about any other processes that are running.
 
 ## Requesting memory space
 
+When a process calls the method `Mem_Init()`, the memory manager requests memory from the operating system. It first uses the fuction `mmap()` in C, and then creates the header of the newly obtained region and finally returns the head pointer to the free list. 
+
 ## Allocating memory
+
+Method `Mem_Alloc()` behaves similarly to the ready-made `malloc()` function in C. When the process calls this method, the memory manager searches for an available and large enough memory block within the free list, and allocates the block according to the need of the calling process. It then returns the pointer to the allocated memory space.
 
 ## Freeing Memory
 
-## Debugging
+Method `Mem_Free()` behaves similarly to `free()` function in C. When the process calls this method, the memory manager frees the memory space pointed to by a given pointer and adds this space to the free list. 
 
 ## File description
 
+- [mem.h](https://github.com/vantrinh7/MemoryManager/blob/master/mem.h) is the file that defines the prototypes for methods in the memory manager, such as `Mem_Init()`, `Mem_Alloc()` or `Mem_Free()`.
+- [mem.c](https://github.com/vantrinh7/MemoryManager/blob/master/mem.c) includes `mem.h` and is the source file.
+- [libmem.so](https://github.com/vantrinh7/MemoryManager/blob/master/libmem.so) is a Shared Object file that links to the source file. This makes the source file a shared library that can be included into other source files dynamically and creates small executables (as opposed to a static library that does not enable users to use the most updated version of the library at run time, and creates large executable files).
+- [makefile](https://github.com/vantrinh7/MemoryManager/blob/master/makefile) includes rules for creating a shared library and constructing test file. 
+- [memtest.c](https://github.com/vantrinh7/MemoryManager/blob/master/memtest.c) is a test file that utilizes the memory manger. [expected_output.txt](https://github.com/vantrinh7/MemoryManager/blob/master/expected_output.txt) is the expected output when running memtest.c. The memory manager can be tested in any other file by adapting from this example.
 
 (Image source: [Operating System - Three Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/), Chapter 17).
