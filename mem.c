@@ -34,6 +34,7 @@ node_t *head;
 void *Mem_Init (int sizeOfRegion) {
   int requestSize;
 
+  // Calculate the requestSize to be multiple of a page (this is required by the mmap function).
   // If size requested is not divisible by page size, round up
   if ((sizeOfRegion % getpagesize()) != 0) {
     int multiple = (int)(sizeOfRegion/getpagesize()) + 1;
