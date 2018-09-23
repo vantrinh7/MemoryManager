@@ -42,6 +42,6 @@ Method `Mem_Free()` behaves similarly to `free()` function in C. When the proces
 - [makefile](https://github.com/vantrinh7/MemoryManager/blob/master/makefile) includes rules for creating a shared library and constructing test file. 
 - [memtest.c](https://github.com/vantrinh7/MemoryManager/blob/master/memtest.c) is a test file that utilizes the memory manger. [expected_output.txt](https://github.com/vantrinh7/MemoryManager/blob/master/expected_output.txt) is the expected output when running memtest.c. The memory manager can be tested in any other file by adapting from this example.
 
-Note: Before `memtest` is run, an environment variable, LD_LIBRARY_PATH, needs to be set, so that the system can find the library at run-time. Assuming `memtest.c` is run from the directory where it is stored, this command can be used before the file is run: `export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH`.
+<u>Note</u>: Before `memtest` is run, an environment variable, LD_LIBRARY_PATH, needs to be set, so that the system can find the library at run-time. Assuming `memtest.c` is run from the directory where it is stored, this command should be used before running the file: `export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH`.
 
 (Image source: [Operating System - Three Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/), Chapter 17).
