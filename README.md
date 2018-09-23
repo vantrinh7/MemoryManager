@@ -6,7 +6,7 @@ This is a program that manages the virtual address space of the heap memory in t
 
 Each memory block has a header, followed by a space that is either allocated or free. The header includes two pieces of information: the size of the free chunk and a field of number. In an allocated chunk, this field contains a "magic number" - an arbitrarily designated number used to identify an allocated space. In a free chunk, this field contains the address of the next item in the list of free memory blocks. 
 
-An example of this process is, inititally, the user requests 4KB (or 4096 bytes) from the operating system for the heap. Since each field in the header is an integer, its size is 4 bytes. Thus, the total size of the header is 8 bytes. The free space is 4096 - 8 = 4088 bytes, which is saved into the "size" field of the header. `head` is the pointer to the beginning of the free list, and it points to the header of this chunk. 
+An example of this process: assume that inititally, the user requests 4KB (or 4096 bytes) from the operating system for the heap. Since each field in the header is an integer, its size is 4 bytes. Thus, the total size of the header is 8 bytes. The free space is 4096 - 8 = 4088 bytes, which is saved into the "size" field of the header. `head` is the pointer to the beginning of the free list, and it points to the header of this chunk. 
 
 (pic)
 
@@ -40,8 +40,8 @@ Method `Mem_Free()` behaves similarly to `free()` function in C. When the proces
 - [mem.c](https://github.com/vantrinh7/MemoryManager/blob/master/mem.c) includes `mem.h` and is the source file.
 - [libmem.so](https://github.com/vantrinh7/MemoryManager/blob/master/libmem.so) is a Shared Object file that links to the source file. This makes the source file a shared library that can be included into other source files dynamically and creates small executables (as opposed to a static library that does not enable users to use the most updated version of the library at run time, and creates large executable files).
 - [makefile](https://github.com/vantrinh7/MemoryManager/blob/master/makefile) includes rules for creating a shared library and constructing test file. 
-- [memtest.c](https://github.com/vantrinh7/MemoryManager/blob/master/memtest.c) is a test file that utilizes the memory manger. [expected_output.txt](https://github.com/vantrinh7/MemoryManager/blob/master/expected_output.txt) is the expected output when running memtest.c. The memory manager can be tested in any other file by adapting from this example.
+- [memtest.c](https://github.com/vantrinh7/MemoryManager/blob/master/memtest.c) is a test file that utilizes the memory manger. [expected_output.txt](https://github.com/vantrinh7/MemoryManager/blob/master/expected_output.txt) is the expected output when running memtest.c. The memory manager may be tested in any other file by adapting from this example.
 
-<u>Note</u>: Before `memtest` is run, an environment variable, LD_LIBRARY_PATH, needs to be set, so that the system can find the library at run-time. Assuming `memtest.c` is run from the directory where it is stored, this command should be used before running the file: `export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH`.
+Note: Before memtest.c is run, an environment variable, LD_LIBRARY_PATH, needs to be set, so that the system can find the library at run-time. Assuming `memtest.c` is run from the directory where it is stored, this command should be used before running the file: `export LD_LIBRARY_PATH=.:$LD_LIBRARY_PATH`.
 
 (Image source: [Operating System - Three Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/), Chapter 17).
