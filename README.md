@@ -6,7 +6,7 @@ This is a program that manages the virtual address space of the heap memory in t
 
 Each memory block has a header, followed by a space that is either allocated or free. The header includes two pieces of information: the size of the free chunk and a field of number. In an allocated chunk, this field contains a "magic number" - an arbitrarily designated number used to identify an allocated space. In a free chunk, this field contains the address of the next item in the list of free memory blocks. 
 
-An example of this process: assume that inititally, the user requests 4KB (or 4096 bytes) from the operating system for the heap. Since each field in the header is an integer, its size is 4 bytes. Thus, the total size of the header is 8 bytes. The free space is 4096 - 8 = 4088 bytes, which is saved into the "size" field of the header. `head` is the pointer to the beginning of the free list, and it points to the header of this chunk. 
+An example of this process: assume that inititally, the user requests 4KB (or 4096 bytes) from the operating system for the heap. Since each field in the header is an integer, its size is 4 bytes. Thus, the total size of the header is 8 bytes. The free space is 4096 - 8 = 4088 bytes, which is saved into the `size` field of the header. `head` is the pointer to the beginning of the free list, and it points to the header of this chunk. 
 
 ![](misc/1.png)
 
@@ -14,7 +14,7 @@ Suppose 100 bytes is allocated and identified by the pointer `ptr`. The header t
 
 ![](misc/2.png)
 
-Suppose two more 100-byte chunks are allocated (left figure below). The size of the free chunk is now 3764 (= 3980 - 100 - 8 - 100 - 8). If the second chunk is freed, its "next" field will contain the address of the pointer to next free chunk (right figure below).
+Suppose two more 100-byte chunks are allocated (left figure below). The size of the free chunk is now 3764 (= 3980 - 100 - 8 - 100 - 8). If the second chunk is freed, its `next` field will contain the address of the pointer to next free chunk (right figure below).
 
 ![](misc/3.png)         ![](misc/4.png)
 
