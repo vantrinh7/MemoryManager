@@ -1,4 +1,4 @@
-# Memory Manager
+# Memory Manager 
 
 This is a program that manages the virtual address space of the heap memory in the operating system. The program simulates the C dynamic  memory allocation, with functions similar to C functions such as `malloc()` and `free()`. The memory manager has three tasks: asking the operating system to expand the heap portion of a process' address space, allocating the given memory space to the calling process, and adding the memory space back to a list of free memory chunks when the process is finished.  
 
